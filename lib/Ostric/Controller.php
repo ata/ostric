@@ -1,5 +1,7 @@
 <?php
 
+namespace Ostric;
+
 class Controller
 {
     private $view;

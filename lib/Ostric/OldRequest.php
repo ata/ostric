@@ -1,6 +1,8 @@
 <?php
 
-class Request{
+namespace Ostric;
+
+class OldRequest{
 
     private $controllerName;
     private $actionName;

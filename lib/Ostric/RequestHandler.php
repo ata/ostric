@@ -1,4 +1,5 @@
 <?php
+namespace Ostric;
 class RequestHandler
 {
     private $request;
