@@ -1,7 +1,5 @@
 <?php
 
-namespace App;
-
 class ExampleApplication extends Ostric\Application
 {
     public function __construct()

@@ -2,9 +2,10 @@
 
 class Ostric
 {
-    private $libDir;
+    private static $libDir = __DIR__;
     public static function autoload($class)
     {
         
     }
+    public 
 }

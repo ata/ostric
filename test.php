@@ -1,29 +1,29 @@
 <?php
 
 class TestClass{
-	
+    
 }
 
 function getHashTag($string)
 {
-	preg_match_all('/\B#(\w+)/',$string,$subpatten);
-	return $subpatten[1];
+    preg_match_all('/\B#(\w+)/',$string,$subpatten);
+    return $subpatten[1];
 }
 function getBalance($string)
 {
-	preg_match_all('/\B@(\d+)/',$string,$subpatten);
-	return $subpatten[1];
+    preg_match_all('/\B@(\d+)/',$string,$subpatten);
+    return $subpatten[1];
 }
 
 // misalnya parameter yang dimasukkan adalah /home/ata/1.html
 // patternnya /:controller/:action/:id.html
 function getParams($string){
-	preg_match_all('/\:(\w+)/i',$string,$subpatten);
-	return $subpatten;
+    preg_match_all('/\:(\w+)/i',$string,$subpatten);
+    return $subpatten;
 }
 
 function quouteUrl($str){
-	return preg_quote(str_replace(':','',$str));
+    return preg_quote(str_replace(':','',$str));
 }
 
 $result = getHashTag("Saya sedang #makan malam dengan pacar saya kemudian #nonton di bioskop");
@@ -39,6 +39,7 @@ print_r($result3);
 print_r($result4);
 
 var_dump($result5);
+
 
 
 
