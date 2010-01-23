@@ -2,10 +2,10 @@
 
 namespace Ostric\Base;
 
-class Object
+class Base
 {
     public function getReflection()
     {
-        return \ReflectionClass(get_class($this));
+        return new \ReflectionClass(get_class($this));
     }
 }

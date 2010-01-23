@@ -2,8 +2,8 @@
 
 require_once 'lib/Ostric.php';
 
-Ostric::addDirs(__DIR__ . '/classes');
-Ostric::load();
+Ostric::load(__DIR__ . '/app');
 
-Ostric::run('WebApplication');
+$app = new WebApplication();
+$app->run();
 

@@ -1,14 +1,10 @@
 <?php
 
-class A{
-    public static $class = null;
-    public function some(){
-        
-    }
-}
+require_once 'lib/Ostric.php';
+Ostric::addDirs();
+Ostric::load(__DIR__ . '/app');
 
-class B extends A{
-    
-}
+$ref = new ReflectionClass('Page\HomePage');
 
-echo B::$class;
+var_dump($ref->getParentClass());
+

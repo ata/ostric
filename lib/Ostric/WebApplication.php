@@ -1,13 +1,16 @@
 <?php
+
 namespace Ostric;
 
 abstract class WebApplication
 {
     
-    public function __construct()
+    public function run()
     {
-        $class = $this->getHomePage();
-        new $class;
+        $page = $this->getHomePage();
+        $page->run();
+        $page->render();
+        
     }
     
     abstract public function getHomePage();
