@@ -4,13 +4,10 @@ namespace Ostric;
 
 class Component
 {
-    /**
-     * @type Array of Component
-     */
-    protected $components;
-    private $name;
     
-    public 
+    protected $components;
+    protected $id;
+    
     
     public function add(Component $component)
     {

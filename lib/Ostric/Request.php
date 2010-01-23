@@ -8,6 +8,7 @@ class Request
     const POST = "POST";
     const PUT = "PUT";
     const DELETE = "DELETE";
+    
     private $keywords = array();
     
     private static $instance;
