@@ -7,8 +7,6 @@ use Ostric\Base\Component;
 abstract class Page extends Component
 {
     
-    private $child;
-    
     public function getChild()
     {
         return $this->getTemplate($this);
@@ -18,11 +16,13 @@ abstract class Page extends Component
     {
         $parrentRef = $this->getReflection()->getParentClass();
         
-        if (!$parrentRef->isAbstract()) {
-            echo $this->getTemplate($parrentRef->newInstance());
-        } else {
-            echo $this->getTemplate($this);
+        while(!$parrentRef->isAbstract()) {
+            //echo $this->getTemplate($parrentRef->newInstance());
+            $currentRef = $parrentRef;
+            $parrentRef = $parrentRef->getParentClass();
         }
+        
+        echo $this->getTemplate($currentRef->newInstance());
         
     }
 }

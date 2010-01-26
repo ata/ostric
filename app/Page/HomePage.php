@@ -4,7 +4,10 @@ namespace Page;
 
 class HomePage extends BasePage
 {
-    //protected $hello = 'Hello World';
+    /**
+     * @inject
+     */
+    private $testInject;
     
     public function run(){
         

@@ -2,8 +2,13 @@
 
 class WebApplication extends Ostric\WebApplication{
     
+    public function __construct()
+    {
+        
+    }
+    
     public function getHomePage(){
-        return new Page\HomePage();
+        return 'Page\AnotherPage';
     }
     
 }
