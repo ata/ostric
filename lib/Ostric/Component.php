@@ -1,6 +1,6 @@
 <?php
 
-namespace Ostric\Base;
+namespace Ostric;
 
 use Ostric\Util\Inflector;
 
@@ -8,6 +8,7 @@ abstract class Component extends BaseClass
 {
     private $_id;
     private $_properties = array();
+    private $_components = array();
     
     public function __set($name, $value)
     {
@@ -45,5 +46,9 @@ abstract class Component extends BaseClass
         return $this->_id;
     }
     
+    public function add(Component $component)
+    {
+        $this->_
+    }
     
 }
