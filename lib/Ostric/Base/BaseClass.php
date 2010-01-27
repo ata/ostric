@@ -2,8 +2,6 @@
 
 namespace Ostric\Base;
 
-use Reflection;
-
 class BaseClass
 {
     private $attr;
@@ -15,7 +13,7 @@ class BaseClass
     
     public function getClass()
     {
-        return new Reflection\ReflectionClass(get_class($this));
+        return new \ReflectionClass(get_class($this));
     }
     
     public function getPublicProperties()
