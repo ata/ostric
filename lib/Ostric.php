@@ -2,7 +2,6 @@
 
 class Ostric
 {
-
     private static $pathDirs = array(__DIR__);
     
     public static function autoload($class)

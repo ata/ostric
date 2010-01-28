@@ -1,10 +1,9 @@
 <?php
 
-namespace Ostric\Base;
+namespace Ostric;
 
-class BaseClass
+class Object
 {
-    private $attr;
     
     public function __construct()
     {
@@ -15,6 +14,7 @@ class BaseClass
     {
         return new \ReflectionClass(get_class($this));
     }
+    
     
     public function getPublicProperties()
     {
@@ -40,5 +40,6 @@ class BaseClass
     {
         return $this->getClass()->getParentClass();
     }
+    
     
 }

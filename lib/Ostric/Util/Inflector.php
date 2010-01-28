@@ -37,8 +37,10 @@ class Inflector
      */
     public static function simplepattern($word)
     {
-        return preg_replace('/(\:[a-z0-9_]+)/','(?P<$1>\w+)',$word);
+        return '/' . str_replace('/','\/',
+            preg_replace('/(:([a-z0-9_\-]+))/',
+            '(?P<$2>[a-z0-9_\-]+)',$word)) .'/';
     }
     
-
+    
 }

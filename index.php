@@ -7,27 +7,43 @@ Ostric::load(
     __DIR__ . '/tests'
 );
 
-class Component extends Ostric\Base\Component{
-    
-};
-$cls = Ostric\Util\Inflector::classify('/page/component/a');
-//echo $cls;
-new $cls;
-
 /*
-$c = new Component('name');
-echo $c->id ."\n\n";
+class A implements Serializable{
+    private $a = 'A';
+    protected $b = 'B';
+    public $c = 'C';
+}*/
 
-echo gettype('')."\n";
-echo gettype(0)."\n";
-echo gettype(0.1)."\n";
-echo gettype(1.0)."\n";
-echo gettype(true)."\n";
-echo gettype(array())."\n";
-echo gettype($c)."\n";
-echo gettype(NULL)."\n";
-echo gettype(function(){return '';})."\n";
-*/
+class B{
+    private $a;
+    protected $b;
+    public $c;
+    
+    public function __construct($a,$b,$c)
+    {
+        $this->a = $a;
+        $this->b = $b;
+        $this->c = $c;
+    }
+    
+    public function __wakeup()
+    {
+        echo "wakeup\n";
+    }
+    
+    public function __sleep()
+    {
+        return array('a');
+    }
+}
 
+//$b = new B('A','B','C');
+
+//var_dump($b);
+
+session_start();
+//$_SESSION['b'] = $b;
+
+var_dump($_SESSION['b']);
 
 

@@ -2,6 +2,8 @@
 
 namespace Goal;
 
+use Ostric\Component\Markup\Form;
+
 class Guest{
     
     public $name;
@@ -11,10 +13,10 @@ class Guest{
 
 class GuestForm extends Form
 {
-    public $guest = null;
-    public $guests = array();
+    private $guest = null;
+    private $guests = array();
     
-    public function __construct()
+    public function __construct($id, $model)
     {
         parent::__construct();
         

@@ -14,4 +14,18 @@ class GoalApplication extends WebApplication
         return 'Goal\GuestPage';
     }
     
+    /**
+     * array(
+     *      '/url/path' => 'NameSpace\ClassName',
+     * );
+     */
+    public function getUrlMapping()
+    {
+        return array(
+            '/costume/url' => 'Namespace\To\ClassName',
+            '/*' => '*'
+        );
+    }
+    
+    
 }

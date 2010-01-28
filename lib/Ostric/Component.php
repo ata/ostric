@@ -4,51 +4,49 @@ namespace Ostric;
 
 use Ostric\Util\Inflector;
 
-abstract class Component extends BaseClass
+abstract class Component extends Object
 {
-    private $_id;
-    private $_properties = array();
-    private $_components = array();
     
-    public function __set($name, $value)
-    {
-        if ($name =='id') {
-            $this->setId($value);
-        } else {
-            $this->_properties[$name] = $value;
-        }
-    }
+    private $storage;
+    protected $id;
     
-    public function __get($name)
-    {
-        if ($name == 'id') {
-            return $this->getId();
-        }
-        return $this->_properties[$name];
-    }
-    
-    /**
-     * injects = array('id'=>$objectValue)
-     */
-    public function __construct($id, $value)
+    public function __construct($id)
     {
         $this->id = $id;
+        $this->storage = Storage::getInstance();
+        $this->init();
+        
     }
     
-    public function setId($id)
+    private function init()
     {
-        $this->_id  =   Inflector::dotted($this->getClass()->getName()) 
-                        . '.' . $id;
+        $components = $this->storage->getComponents($this);
+        
+        foreach ($components as $component) {
+            if (property_exists($this, $component->getId())) {
+                $name = $component->getId();
+                $this->$name = $component;
+            }
+        }
+        
+    }
+    
+    
+    public function getClassId()
+    {
+        return Inflector::dotted($this->getClass()->getName());
     }
     
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
+    
     
     public function add(Component $component)
     {
-        $this->_
+        $this->storage->addComponent($this, $component);
     }
     
+
 }

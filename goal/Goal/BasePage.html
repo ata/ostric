@@ -3,14 +3,14 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Web Title - <span ostric:content="title"></span></title>
+    <title>Web Title - <span ostric:id="title"></span></title>
     <link rel="Stylesheet" href="/static/css/main.css"/>
     <script type="text/javascript" src="/static/js/main.js"></script>
 </head>
 <body>
     <div id="container">
         <div id="header">
-            <h1>This is Header - <span ostric:content="title"></h1>
+            <h1>This is Header - <span ostric:id="title"></h1>
         </div>
         <div id="content">
             <ostric:child>
@@ -26,7 +26,7 @@
                 mollit anim id est laborum.</p>
             </ostric:child>
         </div>
-        <div id="sidebar" ostric:content="sidebar">
+        <div id="sidebar" ostric:id="sidebar">
             <h3>Sidebar</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                 sed do eiusmod tempor incididunt ut labore et dolore magna 

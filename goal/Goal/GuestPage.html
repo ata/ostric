@@ -1,14 +1,15 @@
+
 <h2>Guest Book</h2>
-<form ostric:content="form">
-    <input ostric:content="name"/>
-    <input ostric:content="email"/>
-    <textarea ostric:content="comment"></textarea>
+<form ostric:id="form">
+    <input ostric:id="name"/>
+    <input ostric:id="email"/>
+    <textarea ostric:id="comment"></textarea>
     <input type="submit"/>
 </form>
 
 <h2>Comments</h2>
 <div ostric:each="form.comments" ostric:item="comment">
-    <div ostric:content="comment">Example Comment</div>
+    <div ostric:id="comment">Example Comment</div>
     <ostric:remove>
     <div>Example Comment</div>
     <div>Example Comment</div>

@@ -2,15 +2,22 @@
 
 namespace Goal;
 
-use Ostric\Markup\Html\WebPage;
+use Ostric\Component\Markup\Page;
+use Ostric\Component\Markup\Label;
 
-abstract class BasePage extends WebPage
+abstract class BasePage extends Page
 {
-    public $title = 'Base Page';
     
     public function __construct()
     {
-        $this->sidebar = new SideBarPanel();
-        $this->form = new GuestBookForm();
+        $this->add($this->getTitle());
+        $this->add(new SideBarPanel('sidebar'));
+        
     }
+    
+    public function getTitle()
+    {
+        return new Label('title','Base Page');
+    }
+    
 }
