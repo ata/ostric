@@ -1,4 +1,4 @@
-
+<ostric:extend>
 <h2>Guest Book</h2>
 <form ostric:id="form">
     <input ostric:id="name"/>
@@ -8,11 +8,20 @@
 </form>
 
 <h2>Comments</h2>
-<div ostric:each="form.comments" ostric:item="comment">
-    <div ostric:id="comment">Example Comment</div>
+<div ostric:id="posts">
+    <div>
+        <p ostric:id="name">Ata</p>
+        <p ostric:id="comment">Hohoho...</p>
+    </div>
     <ostric:remove>
-    <div>Example Comment</div>
-    <div>Example Comment</div>
-    <div>Example Comment</div>
+    <div>
+        <p>Ata</p>
+        <p>Hohoho...</p>
+    </div>
+    <div>
+        <p>Ata</p>
+        <p>Hohoho...</p>
+    </div>
     </ostric:remove>
 </div>
+</ostric:extend>
