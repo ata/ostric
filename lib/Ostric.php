@@ -2,14 +2,16 @@
 
 class Ostric
 {
-    private static $pathDirs = array(__DIR__);
+    const LIB_DIR  = __DIR__;
+    
+    private static $pathDirs = array();
     
     public static function autoload($class)
     {
         if (class_exists($class)) {
             return false;
         }
-
+        
         foreach (self::$pathDirs as $dir) {
             
             $class_path = $dir.'/'.str_replace('\\','/',$class) . '.php';
@@ -40,9 +42,12 @@ class Ostric
     
     public static function load()
     {
+        self::$pathDirs[] = __DIR__;
+        self::$pathDirs[] = __DIR__ . '/vendor';
+        
         $dirs = func_get_args();
         foreach($dirs as $dir) {
-            array_push(self::$pathDirs,$dir);
+            self::$pathDirs[] = $dir;
         }
         
         spl_autoload_register(array('Ostric','autoload'));

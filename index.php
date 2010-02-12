@@ -2,48 +2,38 @@
 
 require_once 'lib/Ostric.php';
 
+define('S_TMP', __DIR__ . '/tmp');
+
+
 Ostric::load(
     __DIR__ . '/example',
     __DIR__ . '/tests'
 );
 
-/*
-class A implements Serializable{
-    private $a = 'A';
-    protected $b = 'B';
-    public $c = 'C';
-}*/
 
-class B{
-    private $a;
-    protected $b;
-    public $c;
+class A extends Ostric\Component{
+    public $value = 1;
+}
+
+
+class B extends Ostric\Component{
     
-    public function __construct($a,$b,$c)
-    {
-        $this->a = $a;
-        $this->b = $b;
-        $this->c = $c;
-    }
+    public $value;
     
-    public function __wakeup()
+    public function __construct()
     {
-        echo "wakeup\n";
-    }
-    
-    public function __sleep()
-    {
-        return array('a');
+        parent::__construct();
+        if($this->value == null){
+            $this->value = new A;
+        }
     }
 }
 
-//$b = new B('A','B','C');
 
-//var_dump($b);
-
-session_start();
-//$_SESSION['b'] = $b;
-
-var_dump($_SESSION['b']);
-
+$c = new B();
+$c->value->value ++;
+//header('content-type: text/plain');
+//session_destroy();
+echo "Value: {$c->value->value}<br/>\n";
+print_r($_SESSION);
 

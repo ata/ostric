@@ -4,42 +4,36 @@ namespace Ostric;
 
 class Object
 {
-    
-    public function __construct()
-    {
-        $this->something = 'value';
-    }
+    private $_class = null;
     
     public function getClass()
     {
-        return new \ReflectionClass(get_class($this));
+        if ($this->class != null) {
+            return $this->_class;
+        }
+        $this->_class = new \ReflectionClass(get_class($this));
+        return $this->_class;
     }
     
-    
-    public function getPublicProperties()
-    {
-        
-    }
-    
-    public function getPrivateProperties()
-    {
-        
-    }
-    
-    public function getInjectProperties()
-    {
-        
-    }
-    
-    public function getProperties()
-    {
-        
-    }
     
     public function getParentClass()
     {
         return $this->getClass()->getParentClass();
     }
     
+    public function getFileName()
+    {
+        return $this->getClass()->getFileName();
+    }
+    
+    public function getNamespace()
+    {
+        return $this->getClass()->getFileName();
+    }
+    
+    public function getShortName()
+    {
+        return $this->getClass()->getShortName();
+    }
     
 }

@@ -41,6 +41,4 @@ class Inflector
             preg_replace('/(:([a-z0-9_\-]+))/',
             '(?P<$2>[a-z0-9_\-]+)',$word)) .'/';
     }
-    
-    
 }

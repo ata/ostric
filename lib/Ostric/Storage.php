@@ -2,62 +2,43 @@
 
 namespace Ostric;
 
-class Storage
+class Storage extends Object
 {
     private static $instance = null;
     
     public function __construct()
     {
+        session_save_path(S_TMP);
         session_start();
+        
+        echo session_save_path();
     }
 
     
     
     public function __set($key,$value)
     {
-        $_SESSION[$key] = $value;
+        $_SESSION['ostric'][$key] = $value;
     }
+    
     
     public function __get($key)
     {
-        return $_SESSION[$key];
+        return $_SESSION['ostric'][$key];
     }
     
-    public function isIsset($key)
+    public function saveProperties($key,$value)
     {
-        return isset($_SESSION[$key]);
+        $_SESSION['ostric']['properties'][$key] = $value;
     }
     
-    
-    
-    public function isIssetComponent(Component $component)
+    public function loadProperties($key)
     {
-        return isset($_SESSION['component'][$component->getClassId()][$component->getId()]);
-    }
-    
-    public function addComponent($class, Component $component)
-    {
-        //if (!isset($_SESSION['component'][$class->getClassId()][$component->getId()])) {
-            $_SESSION['component'][$class->getClassId()][$component->getId()] = $component;
-            return true;
-        //} 
-        //return false;
-    }
-    
-    public function getComponents(Component $component)
-    {
-        if(isset($_SESSION['component'][$component->getClassId()])) {
-            return $_SESSION['component'][$component->getClassId()];
+        if(isset($_SESSION['ostric']['properties'][$key])) {
+            return $_SESSION['ostric']['properties'][$key];
+        } else {
+            return array();
         }
-        
-        return array();
-    }
-    
-    
-    
-    public function addOrReplaceComponent(Component $component)
-    {
-        $_SESSION['component'][$component->getClassId()][$component->getId()] = $component;
     }
     
     
@@ -68,5 +49,4 @@ class Storage
         }
         return self::$instance;
     }
-    
 }
