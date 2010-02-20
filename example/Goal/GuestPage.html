@@ -1,16 +1,16 @@
-<?php Markup::beginExtend?>
+<html>
+<ostric:extend>
 <h2>Guest Book</h2>
-
-<?php echo Form::begin($form)?> 
-    <?php echo InputText::html($form,'name')?><br/>
-    <?php echo InputText::html($form,'email')?><br/>
-    <?php echo TextArea::html($form,'comment')?><br/>
+<span ostric:id="form"?> 
+    <input ostric:id="name"/>
+    <input ostric:id="email"/>
+    <textarea ostric:id="comment"></textarea>
     <input type="submit"/>
-<?php echo Form::end()?>
+</span>
 
 <h2>Comments</h2>
-<div ostric:id="posts">
-    <p>
+<div>
+    <p ostric:id="comments">
         <span ostric:id="name">Ata</span> <br/>
         <span ostric:id="comment">Hohoho...</span>
     </p>
@@ -25,4 +25,5 @@
     </div>
     </ostric:remove>
 </div>
-<?php Markup::endExtend?>
+</ostric:extend>
+</html>

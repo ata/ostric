@@ -8,7 +8,7 @@ class Object
     
     public function getClass()
     {
-        if ($this->class != null) {
+        if ($this->_class != null) {
             return $this->_class;
         }
         $this->_class = new \ReflectionClass(get_class($this));

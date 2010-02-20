@@ -1,10 +1,13 @@
 <?php
 
-class Ostric
+namespace Ostric;
+
+use Ostric\Util\Inflector;
+
+class Loader
 {
-    const LIB_DIR  = __DIR__;
     
-    private static $pathDirs = array();
+    private static $paths = array();
     
     public static function autoload($class)
     {
@@ -12,9 +15,9 @@ class Ostric
             return false;
         }
         
-        foreach (self::$pathDirs as $dir) {
+        foreach (self::$paths as $path) {
             
-            $class_path = $dir.'/'.str_replace('\\','/',$class) . '.php';
+            $class_path = $path.'/'.str_replace('\\','/',$class) . '.php';
             if (file_exists($class_path)) {
                 require $class_path;
                 return true;
@@ -26,11 +29,17 @@ class Ostric
                 return true;
             }
             
-            $class_path = $dir.'/'.str_replace('_','/',$class) . '.php';
+            $class_path = $path.'/'.str_replace('_','/',$class) . '.php';
             if (file_exists($class_path)) {
                 require $class_path;
                 return true;
-            } 
+            }
+            
+            $class_path = $path.'/'.Inflector::lower($class). '.php';
+            if (file_exists($class_path)) {
+                require $class_path;
+                return true;
+            }
             
         }
         
@@ -42,15 +51,10 @@ class Ostric
     
     public static function load()
     {
-        self::$pathDirs[] = __DIR__;
-        self::$pathDirs[] = __DIR__ . '/vendor';
-        
-        $dirs = func_get_args();
-        foreach($dirs as $dir) {
-            self::$pathDirs[] = $dir;
-        }
-        
-        spl_autoload_register(array('Ostric','autoload'));
+        self::$paths = func_get_args();
+        self::$paths[] = dirname(__DIR__);
+        $paths = func_get_args();
+        spl_autoload_register(array('Ostric\Loader','autoload'));
         
     }
 }

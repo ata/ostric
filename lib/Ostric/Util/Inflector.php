@@ -11,7 +11,7 @@ class Inflector
      */
     public static function dotted($word)
     {
-        return str_replace('\\','.',strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $word)));
+        return str_replace('\\','.',self::lower($word));
     }
     
     
@@ -31,6 +31,11 @@ class Inflector
         $word = str_replace(" ", "\\", ucwords(strtr($word, "/.", "  ")));
         $word = str_replace(" ", "", ucwords(strtr($word, "_-", "  ")));
         return $word;
+    }
+    
+    public static function lower($word)
+    {
+        return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $word));
     }
     /**
      * convert /home/:something/:id.html

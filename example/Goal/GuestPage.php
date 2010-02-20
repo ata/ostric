@@ -41,7 +41,7 @@ class GuestPage extends BasePage
     {
         $this->add(new GuestBookForm('form', new Guest()));
         
-        $posts = new DataList('posts');
+        $posts = new DataList('comments');
         $this->add($posts);
         
         // entry data for list item
